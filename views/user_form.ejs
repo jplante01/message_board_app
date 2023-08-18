@@ -1,54 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Registration Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #333333;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    label {
-      margin-bottom: 10px;
-    }
-    input {
-      margin-bottom: 20px;
-      padding: 5px;
-      width: 200px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #333333;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h1>Registration Form</h1>
-  <form action="/register" method="POST">
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" required>
+  <head>
+    <title>Registration Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+      }
+      h1 {
+        color: #333333;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      label {
+        margin-bottom: 10px;
+      }
+      input {
+        margin-bottom: 20px;
+        padding: 5px;
+        width: 200px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #333333;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+    <div class="error">
+      <% errors.forEach(function(error) { %>
+      <p><%= error.msg %></p>
+      <% }); %>
+    </div>
+    <% } %>
+    <form action="/users/create" method="POST">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" />
 
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" required>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" />
 
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" />
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" />
 
-    <button type="submit">Register</button>
-  </form>
-</body>
+      <button type="submit">Register</button>
+    </form>
+  </body>
 </html>
