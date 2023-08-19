@@ -40,3 +40,7 @@ exports.user_create_post = [
   })
 ]
 
+exports.user_create_success = (req, res, next) => {
+  res.render("success");
+}
+
