@@ -34,7 +34,8 @@ exports.user_create_post = [
         username: userInstance.username,
       });
     } else {
-      res.send('success')
+      await userInstance.save();
+      res.redirect('success')
     }
   })
 ]
