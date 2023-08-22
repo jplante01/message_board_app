@@ -18,6 +18,8 @@ exports.user_create_post = [
     // Extract validation errors from request
     const errors = validationResult(req);
 
+    // Hash the password
+    
     // Create a user object with escaped and trimmed data.
     const userInstance = new User({
       first_name: req.body.first_name,
