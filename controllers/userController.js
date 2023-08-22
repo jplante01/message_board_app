@@ -1,17 +1,30 @@
 const User = require('../models/user');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
 
 exports.user_create_get = (req, res, next) => {
-  res.render("user_form");
-}
+  res.render('user_form');
+};
 
 exports.user_create_post = [
   // validate and sanitize fields
-  body('first_name', 'First name must be specified').trim().isLength({min: 1, max: 30 }).escape(),
-  body('last_name', 'Last name must be specified').trim().isLength({min: 1, max: 30 }).escape(),
-  body('username', 'Username must be specified').trim().isLength({min: 1, max: 30 }).escape(),
-  body('password', 'Password must be specified').trim().isLength({min: 1, max: 30 }).escape(),
+  body('first_name', 'First name must be specified')
+    .trim()
+    .isLength({ min: 1, max: 30 })
+    .escape(),
+  body('last_name', 'Last name must be specified')
+    .trim()
+    .isLength({ min: 1, max: 30 })
+    .escape(),
+  body('username', 'Username must be specified')
+    .trim()
+    .isLength({ min: 1, max: 30 })
+    .escape(),
+  body('password', 'Password must be specified')
+    .trim()
+    .isLength({ min: 1, max: 30 })
+    .escape(),
 
   // Process request after validation and sanitization
   asyncHandler(async (req, res, next) => {
@@ -19,14 +32,15 @@ exports.user_create_post = [
     const errors = validationResult(req);
 
     // Hash the password
-    
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
     // Create a user object with escaped and trimmed data.
     const userInstance = new User({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       username: req.body.username,
-      password: req.body.password,
-    })
+      password: hashedPassword,
+    });
 
     if (!errors.isEmpty()) {
       res.render('user_form', {
@@ -37,14 +51,11 @@ exports.user_create_post = [
       });
     } else {
       await userInstance.save();
-      res.redirect('/users/success')
+      res.redirect('/users/success');
     }
-  })
-]
+  }),
+];
 
 exports.user_create_success = (req, res, next) => {
-  res.render("user_create_success");
-}
-
-
-
+  res.render('user_create_success');
+};
