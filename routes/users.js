@@ -12,9 +12,8 @@ router.get('/', function(req, res, next) {
 router.get('/create', user_controller.user_create_get);
 
 router.post('/create', user_controller.user_create_post)
-module.exports = router;
 
 router.get('/success', user_controller.user_create_success);
 
-
+module.exports = router;
 

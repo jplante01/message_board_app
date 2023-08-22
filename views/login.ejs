@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Welcome</title>
+    <title>Login Form</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -16,15 +16,24 @@
         flex-direction: column;
         align-items: center;
       }
+      label {
+        margin-bottom: 10px;
+      }
+      input {
+        margin-bottom: 20px;
+        padding: 5px;
+        width: 200px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #333333;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
-    <h1>Welcome to My App!</h1>
-    <p>Thank you for visiting.</p>
-    <% if (user) {%>
-    <h1>Welcome Back <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
-    <% } else { %>
     <h1>Login Form</h1>
     <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
     <div class="error">
@@ -33,20 +42,14 @@
       <% }); %>
     </div>
     <% } %>
-    <form action="/log-in" method="POST">
+    <form action="/users/login" method="POST">
       <label for="username">Username:</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        value="<%= typeof username != 'undefined' ? username : '' %>"
-      />
+      <input type="text" id="username" name="username" value="<%= typeof username != 'undefined' ? username : '' %>"/>
 
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" />
 
       <button type="submit">Login</button>
     </form>
-    <%}%>
   </body>
 </html>

@@ -35,12 +35,14 @@ exports.user_create_post = [
       });
     } else {
       await userInstance.save();
-      res.redirect('success')
+      res.redirect('/users/success')
     }
   })
 ]
 
 exports.user_create_success = (req, res, next) => {
-  res.render("success");
+  res.render("user_create_success");
 }
+
+
 
