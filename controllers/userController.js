@@ -25,7 +25,11 @@ exports.user_create_post = [
     .trim()
     .isLength({ min: 1, max: 30 })
     .escape(),
-
+  body('passwordConfirmation', 'Passwords do not match').custom(
+    (value, { req }) => {
+      return value === req.body.password;
+    },
+  ),
   // Process request after validation and sanitization
   asyncHandler(async (req, res, next) => {
     // Extract validation errors from request
