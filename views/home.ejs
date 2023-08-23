@@ -16,6 +16,11 @@
         flex-direction: column;
         align-items: center;
       }
+      .message-card {
+        border: 1px solid black;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
     </style>
   </head>
   <body>
@@ -48,5 +53,18 @@
       <button type="submit">Login</button>
     </form>
     <%}%>
+
+    <% if (typeof messages === 'undefined' || messages.length === 0) { %>
+    <h2>No messages to display</h2>
+    <% } else { %>
+    <% messages.forEach(function(message) { %>
+    <div class="message-card">
+      <h2><%= message.title %></h2>
+      <p><%= message.content %></p>
+      <p>Author: <%= message.author %></p>
+      <p>Timestamp: <%= message.timestamp %></p>
+    </div>
+    <% }); %>
+    <% } %>
   </body>
 </html>
