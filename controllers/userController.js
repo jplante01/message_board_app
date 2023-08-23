@@ -7,6 +7,14 @@ exports.user_create_get = (req, res, next) => {
   res.render('user_form');
 };
 
+// Custom validator to check for unique usernames
+const isUsernameUnique = async value => {
+  const user = await User.findOne({ username: value });
+  if (user) {
+    throw new Error('Username is already in use');
+  }
+};
+
 exports.user_create_post = [
   // validate and sanitize fields
   body('first_name', 'First name must be specified')
@@ -20,7 +28,8 @@ exports.user_create_post = [
   body('username', 'Username must be specified')
     .trim()
     .isLength({ min: 1, max: 30 })
-    .escape(),
+    .escape()
+    .custom(isUsernameUnique),
   body('password', 'Password must be specified')
     .trim()
     .isLength({ min: 1, max: 30 })
