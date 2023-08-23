@@ -7,7 +7,7 @@ const UserSchema = new Schema({
   last_name: { type: String, required: true, maxLength: 30 },
   username: { type: String, required: true, maxLength: 30 },
   password: { type: String, required: true },
-  membership_status: { type: Boolean, default: false }
+  membership_status: { type: Boolean, default: false },
 });
 
 UserSchema.virtual('name').get(function () {
@@ -23,4 +23,4 @@ UserSchema.virtual('name').get(function () {
 
 // Create a static method to get a user's messages?
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model('User', UserSchema);
