@@ -41,7 +41,7 @@
           </article>
         </section>
       </div>
-      <dialog open>
+      <dialog closed>
         <article>
           <header>
             <a href="#close" aria-label="Close" class="close"></a>
@@ -60,6 +60,51 @@
               name="password"
               id="password"
               placeholder="password"
+              required
+            />
+            <button type="submit">Login</button>
+          </form>
+        </article>
+      </dialog>
+      <dialog closed>
+        <article>
+          <header>
+            <a href="#close" aria-label="Close" class="close"></a>
+            Fill out the form to create an account
+          </header>
+          <form>
+            <input
+              type="text"
+              name="first_name"
+              id="firstName"
+              placeholder="first name"
+              required
+            />
+            <input
+              type="text"
+              name="last_name"
+              id="lastName"
+              placeholder="last name"
+            />
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="username"
+              required
+            />
+            <input
+              type="text"
+              name="password"
+              id="password"
+              placeholder="password"
+              required
+            />
+            <input
+              type="password"
+              name="password-confirmation"
+              id="passwordConfimation"
+              placeholder="conirm password"
               required
             />
             <button type="submit">Login</button>
