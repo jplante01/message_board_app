@@ -2,6 +2,15 @@ const Message = require('../models/message');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 
+exports.messages_index = asyncHandler(async (req, res, next) => {
+  const messages = await Message.find()
+    .sort({ timestamp: -1 })
+    .populate('user', 'username')
+    .exec();
+  
+  res.render('home', { user: req.user, messages: messages });
+});
+
 exports.message_create_get = (req, res, next) => {
   res.render('message_form');
 };

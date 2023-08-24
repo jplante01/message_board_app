@@ -61,7 +61,7 @@
     <div class="message-card">
       <h2><%= message.title %></h2>
       <p><%= message.content %></p>
-      <p>Author: <%= message.author %></p>
+      <p>Author: <%= message.user.username %></p>
       <p>Timestamp: <%= message.timestamp %></p>
     </div>
     <% }); %>
