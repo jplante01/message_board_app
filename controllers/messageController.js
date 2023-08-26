@@ -8,13 +8,13 @@ exports.messages_index = asyncHandler(async (req, res, next) => {
     .populate('user', 'username')
     .exec();
   
-  res.render('home', { user: req.user, messages: messages, content:'messageboard' });
+  res.render('home', { user: req.user, messages: messages, pageContent:'messageboard' });
 });
 
 exports.message_create_get = (req, res, next) => {
   res.render('home', {
     user: req.user,
-    content: 'createMessage',
+    pageContent: 'createMessage',
   });
 };
 

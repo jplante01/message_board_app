@@ -24,13 +24,13 @@
       <!-- <% %> - No output tag
       <%= %> - Outputs HTML value
       <%- %> - Outputs unescaped -->
-      <% if (content === 'messageboard') {%>
+      <% if (pageContent === 'messageboard') {%>
         <%- include('messageboard') %>
-      <% } else if (content === 'login') {%>
+      <% } else if (pageContent === 'login') {%>
         <%- include('login') %>
-      <% } else if (content === 'signup') {%>
+      <% } else if (pageContent === 'signup') {%>
         <%- include('create_user_form') %>
-      <% } else if (content === 'createMessage') {%>
+      <% } else if (pageContent === 'createMessage') {%>
         <%- include('create_message_form') %>
       <% } %>
 

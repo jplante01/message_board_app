@@ -6,14 +6,14 @@ const bcrypt = require('bcryptjs');
 exports.user_login = (req, res, next) => {
   res.render('home', {
     user: req.user,
-    content: 'login',
+    pageContent: 'login',
   });
 };
 
 exports.user_create_get = (req, res, next) => {
   res.render('home', {
     user: req.user,
-    content: 'signup',
+    pageContent: 'signup',
   });
 };
 
