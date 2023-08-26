@@ -8,4 +8,5 @@ router.get('/', message_controller.messages_index);
 router.get('/create', message_controller.message_create_get);
 
 router.post('/create', message_controller.message_create_post);
+
 module.exports = router;

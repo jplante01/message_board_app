@@ -48,7 +48,7 @@ exports.message_create_post = [
       });
     } else {
       await messageInstance.save();
-      res.redirect('/messages/create');
+      res.redirect('/messages');
     }
   }),
 ];
