@@ -15,25 +15,30 @@
           </h3>
         </li>
       </ul>
+      <% if (user) { %>
+      <ul>
+        <li><small>Hello <%= user.username %></small></li>
+        <li><a href="/log-out">logout</a></li>
+      </ul>
+      <% } else { %>
       <ul>
         <li><a href="/users/login">login</a></li>
         <li><a href="/users/signup">signup!</a></li>
       </ul>
+      <% } %>
     </nav>
     <main class="container">
       <!-- <% %> - No output tag
       <%= %> - Outputs HTML value
       <%- %> - Outputs unescaped -->
-      <% if (pageContent === 'messageboard') {%>
-        <%- include('messageboard') %>
-      <% } else if (pageContent === 'login') {%>
-        <%- include('login') %>
-      <% } else if (pageContent === 'signup') {%>
-        <%- include('create_user_form') %>
-      <% } else if (pageContent === 'createMessage') {%>
-        <%- include('create_message_form') %>
-      <% } %>
-
+      <!-- <% if (user) { %>
+    <% } else { %>
+    <% } %> -->
+      <% if (pageContent === 'messageboard') {%> <%- include('messageboard') %>
+      <% } else if (pageContent === 'login') {%> <%- include('login') %> <% }
+      else if (pageContent === 'signup') {%> <%- include('create_user_form') %>
+      <% } else if (pageContent === 'createMessage') {%> <%-
+      include('create_message_form') %> <% } %>
     </main>
   </body>
 </html>
