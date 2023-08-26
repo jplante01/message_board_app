@@ -11,13 +11,13 @@
       <ul>
         <li>
           <h3>
-            <strong>MessageBoard</strong>
+            <a href="/messages"><strong>MessageBoard</strong></a>
           </h3>
         </li>
       </ul>
       <ul>
-        <li><a href="/login">login</a></li>
-        <li><a href="/club-signup">Join the club!</a></li>
+        <li><a href="/users/login">login</a></li>
+        <li><a href="/users/signup">signup!</a></li>
       </ul>
     </nav>
     <main class="container">
@@ -30,6 +30,8 @@
         <%- include('login') %>
       <% } else if (content === 'signup') {%>
         <%- include('create_user_form') %>
+      <% } else if (content === 'createMessage') {%>
+        <%- include('create_message_form') %>
       <% } %>
 
     </main>

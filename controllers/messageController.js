@@ -12,7 +12,10 @@ exports.messages_index = asyncHandler(async (req, res, next) => {
 });
 
 exports.message_create_get = (req, res, next) => {
-  res.render('message_form');
+  res.render('home', {
+    user: req.user,
+    content: 'createMessage',
+  });
 };
 
 exports.message_create_post = [
