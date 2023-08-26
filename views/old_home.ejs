@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+      }
+      h1 {
+        color: #333333;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .message-card {
+        border: 1px solid black;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to My App!</h1>
+    <p>Thank you for visiting.</p>
+    <% if (user) {%>
+    <h1>Welcome Back <%= user.username %></h1>
+    <a href="/log-out">LOG OUT</a>
+    <% } else { %>
+    <h1>Login Form</h1>
+    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+    <div class="error">
+      <% errors.forEach(function(error) { %>
+      <p><%= error.msg %></p>
+      <% }); %>
+    </div>
+    <% } %>
+    <form action="/log-in" method="POST">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        value="<%= typeof username != 'undefined' ? username : '' %>"
+      />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" />
+
+      <button type="submit">Login</button>
+    </form>
+    <%}%>
+
+    <% if (typeof messages === 'undefined' || messages.length === 0) { %>
+    <h2>No messages to display</h2>
+    <% } else { %>
+    <% messages.forEach(function(message) { %>
+    <div class="message-card">
+      <h2><%= message.title %></h2>
+      <p><%= message.content %></p>
+      <p>Author: <%= message.user.username %></p>
+      <p><%= message.formatted_timestamp %></p>
+    </div>
+    <% }); %>
+    <% } %>
+  </body>
+</html>

@@ -93,6 +93,9 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Serve static files (stylesheet, etc)
+app.use(express.static(__dirname + '/public'));
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/messages', messagesRouter);
