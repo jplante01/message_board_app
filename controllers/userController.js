@@ -3,8 +3,18 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
+exports.user_login = (req, res, next) => {
+  res.render('home', {
+    user: req.user,
+    content: 'login',
+  });
+};
+
 exports.user_create_get = (req, res, next) => {
-  res.render('user_form');
+  res.render('home', {
+    user: req.user,
+    content: 'signup',
+  });
 };
 
 // Custom validator to check for unique usernames

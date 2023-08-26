@@ -3,10 +3,10 @@ const router = express.Router();
 
 const user_controller = require('../controllers/userController');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('users landing page');
-});
+//Get request for login form
+router.get('/login', user_controller.user_login);
+
+router.get('/signup', user_controller.user_create_get);
 
 // GET request for creating a new user
 router.get('/create', user_controller.user_create_get);
