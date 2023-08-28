@@ -14,6 +14,7 @@ exports.user_create_get = (req, res, next) => {
   res.render('home', {
     user: req.user,
     pageContent: 'signup',
+    errors: req.errors,
   });
 };
 
@@ -66,7 +67,7 @@ exports.user_create_post = [
     });
 
     if (!errors.isEmpty()) {
-      res.render('user_form', {
+      res.render('create_user_form', {
         errors: errors.array(),
         firstName: userInstance.first_name,
         lastName: userInstance.last_name,

@@ -1,36 +1,40 @@
 <article>
-  <header>
-    <a href="#close" aria-label="Close" class="close"></a>
-    Fill out the form to create an account
-  </header>
-  <form>
+  <header>Fill out the form to create an account</header>
+  <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+  <ul>
+    <% errors.forEach(function(error) { %>
+    <li style="color:rgb(161, 15, 15)"><%= error.msg %></li>
+    <% }); %>
+  </ul>
+  <% } %>
+  <form action="/users/create" method="POST">
     <input
       type="text"
       name="first_name"
       id="firstName"
-      placeholder="first name"
+      placeholder="First name"
       required
     />
-    <input type="text" name="last_name" id="lastName" placeholder="last name" />
+    <input type="text" name="last_name" id="lastName" placeholder="Last name" />
     <input
       type="text"
       name="username"
       id="username"
-      placeholder="username"
-      required
-    />
-    <input
-      type="text"
-      name="password"
-      id="password"
-      placeholder="password"
+      placeholder="Username"
       required
     />
     <input
       type="password"
-      name="password-confirmation"
-      id="passwordConfimation"
-      placeholder="conirm password"
+      name="password"
+      id="Password"
+      placeholder="Password"
+      required
+    />
+    <input
+      type="password"
+      name="passwordConfirmation"
+      id="passwordConfirmation"
+      placeholder="Confirm password"
       required
     />
     <button type="submit">Login</button>
