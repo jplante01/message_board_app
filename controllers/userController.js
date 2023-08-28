@@ -81,5 +81,8 @@ exports.user_create_post = [
 ];
 
 exports.user_create_success = (req, res, next) => {
-  res.render('user_create_success');
+  res.render('home', {
+    user: req.user,
+    pageContent: 'userCreateSuccess',
+  });
 };

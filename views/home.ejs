@@ -34,11 +34,17 @@
       <!-- <% if (user) { %>
     <% } else { %>
     <% } %> -->
-      <% if (pageContent === 'messageboard') {%> <%- include('messageboard') %>
-      <% } else if (pageContent === 'login') {%> <%- include('login') %> <% }
-      else if (pageContent === 'signup') {%> <%- include('create_user_form') %>
-      <% } else if (pageContent === 'createMessage') {%> <%-
-      include('create_message_form') %> <% } %>
+      <% if (pageContent === 'messageboard') {%> 
+        <%- include('messageboard') %>
+      <% } else if (pageContent === 'login') {%> 
+        <%- include('login') %> 
+        <% } else if (pageContent === 'signup') {%> 
+        <%- include('create_user_form') %>
+      <% } else if (pageContent === 'createMessage') {%> 
+        <%- include('create_message_form') %> 
+      <% } else if (pageContent === 'userCreateSuccess') {%> 
+        <%- include('user_create_success') %> 
+      <% } %>
     </main>
   </body>
 </html>
