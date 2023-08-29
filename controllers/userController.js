@@ -67,11 +67,13 @@ exports.user_create_post = [
     });
 
     if (!errors.isEmpty()) {
-      res.render('create_user_form', {
+      res.render('home', {
         errors: errors.array(),
+        user: req.user,
+        pageContent: 'signup',
         firstName: userInstance.first_name,
         lastName: userInstance.last_name,
-        username: userInstance.username,
+        userName: userInstance.username,
       });
     } else {
       await userInstance.save();

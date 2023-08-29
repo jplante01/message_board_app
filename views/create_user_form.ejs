@@ -3,7 +3,7 @@
   <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
   <ul>
     <% errors.forEach(function(error) { %>
-    <li style="color:rgb(161, 15, 15)"><%= error.msg %></li>
+    <li style="color: rgb(161, 15, 15)"><%= error.msg %></li>
     <% }); %>
   </ul>
   <% } %>
@@ -12,30 +12,34 @@
       type="text"
       name="first_name"
       id="firstName"
+      value="<%= typeof firstName != 'undefined' ? firstName : ""%>"
       placeholder="First name"
-      required
     />
-    <input type="text" name="last_name" id="lastName" placeholder="Last name" />
+    <input 
+      type="text" 
+      name="last_name" 
+      id="lastName" 
+      value="<%= typeof lastName != 'undefined' ? lastName : ""%>"
+      placeholder="Last name" 
+    />
     <input
       type="text"
       name="username"
       id="username"
+      value="<%= typeof userName != 'undefined' ? userName : ""%>"
       placeholder="Username"
-      required
     />
     <input
       type="password"
       name="password"
       id="Password"
       placeholder="Password"
-      required
     />
     <input
       type="password"
       name="passwordConfirmation"
       id="passwordConfirmation"
       placeholder="Confirm password"
-      required
     />
     <button type="submit">Login</button>
   </form>
