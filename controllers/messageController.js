@@ -41,15 +41,23 @@ exports.message_create_post = [
     });
 
     if (!errors.isEmpty()) {
-      res.render('message_form', {
+      res.render('home', {
         errors: errors.array(),
+        user: req.user,
+        pageContent: 'createMessage',
         title: messageInstance.title,
         content: messageInstance.content,
       });
     } else {
       await messageInstance.save();
-      res.redirect('/messages');
+      res.redirect('/messages/success');
     }
   }),
 ];
 
+exports.message_create_success = (req, res, next) => {
+  res.render('home', {
+    user: req.user,
+    pageContent: 'messageCreateSuccess',
+  });
+};

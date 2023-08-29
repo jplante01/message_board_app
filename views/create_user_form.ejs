@@ -1,12 +1,6 @@
 <article>
   <header>Fill out the form to create an account</header>
-  <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
-  <ul>
-    <% errors.forEach(function(error) { %>
-    <li style="color: rgb(161, 15, 15)"><%= error.msg %></li>
-    <% }); %>
-  </ul>
-  <% } %>
+  <%- include('errors') %>
   <form action="/users/create" method="POST">
     <input
       type="text"

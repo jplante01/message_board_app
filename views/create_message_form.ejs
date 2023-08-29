@@ -1,8 +1,6 @@
 <article>
-  <header>
-    <a href="#close" aria-label="Close" class="close"></a>
-    Fill out the form to create an message
-  </header>
+  <header>Fill out the form and submit to create a message</header>
+  <%- include('errors') %>
   <form action="/messages/create" method="POST">
     <label for="title">Title:</label>
     <input

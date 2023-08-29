@@ -9,4 +9,6 @@ router.get('/create', message_controller.message_create_get);
 
 router.post('/create', message_controller.message_create_post);
 
+router.get('/success', message_controller.message_create_success);
+
 module.exports = router;
