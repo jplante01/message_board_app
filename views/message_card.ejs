@@ -1,0 +1,11 @@
+    <article>
+      <hgroup>
+        <h2><%= message.title %></h2>
+        <h3> <%= message.content %> </h3>
+      </hgroup>
+      <div style="display: grid; grid-template-columns: auto 1fr auto">
+        <div style="display: inline-block"><cite><%= message.user.username %></cite></div>
+        <div style="display: inline-block"></div>
+        <div style="display: inline-block"><%= message.formatted_timestamp %></div>
+      </div>
+    </article>

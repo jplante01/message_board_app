@@ -5,62 +5,22 @@
     <% } else { %>
       <h3>Login to write to the messageboard!</h3>
     <% } %>
+    <% if (typeof messages === 'undefined' || messages.length === 0) { %>
+    <h2>No messages to display</h2>
+    <% } else { %>
+    <% messages.forEach(function(message) { %>    
     <article>
       <hgroup>
-        <h2>30 characters in this title...</h2>
-        <h3>
-          240Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          facilisi. Sed et ultrices dolor, nec venenatis risus. Proin quis
-          tempor nunc. Suspendisse id semper eros. Donec lacinia est vitae metus
-          gravida, ac tristique erat ultricies. Nunc auctor, turpis id rhoncus
-          feugiat, turpis est convallis urna, ut ullamcorper enim mauris a arcu.
-          Praesent euismod, enim in commodo fringilla, lacus odio luctus purus,
-          vitae tempus nibh lorem vel enim.
-        </h3>
+        <h2><%= message.title %></h2>
+        <h3> <%= message.content %> </h3>
       </hgroup>
       <div style="display: grid; grid-template-columns: auto 1fr auto">
-        <div style="display: inline-block"><cite>Author</cite></div>
+        <div style="display: inline-block"><cite><%= message.user.username %></cite></div>
         <div style="display: inline-block"></div>
-        <div style="display: inline-block">Timestamp</div>
+        <div style="display: inline-block"><%= message.formatted_timestamp %></div>
       </div>
     </article>
-    <article>
-      <hgroup>
-        <h2>30 characters in this title...</h2>
-        <h3>
-          240Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          facilisi. Sed et ultrices dolor, nec venenatis risus. Proin quis
-          tempor nunc. Suspendisse id semper eros. Donec lacinia est vitae metus
-          gravida, ac tristique erat ultricies. Nunc auctor, turpis id rhoncus
-          feugiat, turpis est convallis urna, ut ullamcorper enim mauris a arcu.
-          Praesent euismod, enim in commodo fringilla, lacus odio luctus purus,
-          vitae tempus nibh lorem vel enim.
-        </h3>
-      </hgroup>
-      <div style="display: grid; grid-template-columns: auto 1fr auto">
-        <div style="display: inline-block">Author</div>
-        <div style="display: inline-block"></div>
-        <div style="display: inline-block">Timestamp</div>
-      </div>
-    </article>
-    <article>
-      <hgroup>
-        <h2>30 characters in this title...</h2>
-        <h3>
-          240Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          facilisi. Sed et ultrices dolor, nec venenatis risus. Proin quis
-          tempor nunc. Suspendisse id semper eros. Donec lacinia est vitae metus
-          gravida, ac tristique erat ultricies. Nunc auctor, turpis id rhoncus
-          feugiat, turpis est convallis urna, ut ullamcorper enim mauris a arcu.
-          Praesent euismod, enim in commodo fringilla, lacus odio luctus purus,
-          vitae tempus nibh lorem vel enim.
-        </h3>
-      </hgroup>
-      <div style="display: grid; grid-template-columns: auto 1fr auto">
-        <div style="display: inline-block">Author</div>
-        <div style="display: inline-block"></div>
-        <div style="display: inline-block">Timestamp</div>
-      </div>
-    </article>
+    <% }); %>
+    <% } %>
   </section>
 </div>
