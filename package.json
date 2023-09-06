@@ -16,6 +16,7 @@
     "express-async-handler": "^1.2.0",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
+    "he": "^1.2.0",
     "http-errors": "~1.6.3",
     "luxon": "^3.4.1",
     "mongoose": "^7.4.3",

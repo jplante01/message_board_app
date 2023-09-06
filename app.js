@@ -8,12 +8,16 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const logger = require('morgan');
 const User = require('./models/user');
+const he = require('he');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const messagesRouter = require('./routes/messages');
 
 const app = express();
+
+// Create a local variable for the he.decode() method
+app.locals.decodeHTML = he.decode;
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
