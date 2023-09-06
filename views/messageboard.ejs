@@ -1,27 +1,45 @@
 <div class="grid">
   <section>
     <% if (user) { %>
-      <a href="/messages/create" role="button">Post to the MessageBoard!</a>
+    <a href="/messages/create" role="button">Post to the MessageBoard!</a>
     <% } else { %>
-      <h3>Login to write to the messageboard!</h3>
-    <% } %>
-    <% if (typeof messages === 'undefined' || messages.length === 0) { %>
+    <h3>Login to write to the messageboard!</h3>
+    <% } %> <% if (typeof messages === 'undefined' || messages.length === 0) {
+    %>
     <h2>No messages to display</h2>
-    <% } else { %>
-    <% messages.forEach(function(message) { %>    
-    <article style="position:relative">
+    <% } else { %> <% messages.forEach(function(message) { %>
+    <article style="position: relative">
       <hgroup>
         <h2><%= decodeHTML(message.title) %></h2>
-        <h3> <%= decodeHTML(message.content) %> </h3>
+        <h3><%= decodeHTML(message.content) %></h3>
       </hgroup>
       <div style="display: grid; grid-template-columns: auto 1fr auto">
-        <div style="display: inline-block"><cite><%= decodeHTML(message.user.username) %></cite></div>
+        <div style="display: inline-block">
+          <cite><%= decodeHTML(message.user.username) %></cite>
+        </div>
         <div style="display: inline-block"></div>
-        <div style="display: inline-block"><%= decodeHTML(message.formatted_timestamp) %></div>
+        <div style="display: inline-block">
+          <%= decodeHTML(message.formatted_timestamp) %>
+        </div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="position:absolute; top:18px; right:10px; width:24px; height:24px;"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>
+      <a href="#">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          style="
+            position: absolute;
+            top: 14px;
+            right: 11px;
+            width: 24px;
+            height: 24px;
+          "
+        >
+          <path
+            d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
+          />
+        </svg>
+      </a>
     </article>
-    <% }); %>
-    <% } %>
+    <% }); %> <% } %>
   </section>
 </div>
