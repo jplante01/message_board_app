@@ -22,6 +22,7 @@
           <%= decodeHTML(message.formatted_timestamp) %>
         </div>
       </div>
+      <%  if(user && user.username === message.user.username){ %>
       <a href="/messages/delete/<%= message.id %>">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -39,6 +40,7 @@
           />
         </svg>
       </a>
+      <% } %>
     </article>
     <% }); %> <% } %>
   </section>
