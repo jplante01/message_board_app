@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const { requireRole } = require('../middlewares/requireRole');
 
 const message_controller = require('../controllers/messageController');
 
 router.get('/', message_controller.messages_index);
+
+router.get('/admin',requireRole('admin'), message_controller.messages_dashboard)
 
 router.get('/create', message_controller.message_create_get);
 

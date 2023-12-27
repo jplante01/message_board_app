@@ -11,6 +11,19 @@ exports.messages_index = asyncHandler(async (req, res, next) => {
   res.render('home', { user: req.user, messages: messages, pageContent:'messageboard' });
 });
 
+exports.messages_dashboard = asyncHandler(async (req, res, next) => {
+  const messages = await Message.find()
+    .sort({ timestamp: -1 })
+    .populate('user', 'username')
+    .exec();
+
+  res.render('home', {
+    user: req.user,
+    messages: messages,
+    pageContent: 'dashboard',
+  });
+});
+
 exports.message_create_get = (req, res, next) => {
   res.render('home', {
     user: req.user,
