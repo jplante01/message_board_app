@@ -1,3 +1,6 @@
+<% if (typeof messages === 'undefined' || messages.length === 0) { %>
+<h2>No messages to display</h2>
+<% } else { %>
 <table>
   <thead>
     <tr>
@@ -5,34 +8,19 @@
       <th scope="col">Checkbox</th>
       <th scope="col">Username</th>
       <th scope="col">Message</th>
+      <th scope="col">Timestamp</th>
     </tr>
-  </thead>
+  </thead> 
   <tbody>
+  <% messages.forEach(function(message) { %>
     <tr>
       <th scope="row">1</th>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
+      <td>Checkbox</td>
+      <td><%= decodeHTML(message.user.username) %></td>
+      <td><%= decodeHTML(message.title) %></td>
+      <td><%= decodeHTML(message.formatted_timestamp) %></td>
     </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-    </tr>
+  <% }); %> 
   </tbody>
-  <tfoot>
-    <tr>
-      <th scope="col">#</th>
-      <td scope="col">Total</td>
-      <td scope="col">Total</td>
-      <td scope="col">Total</td>
-    </tr>
-  </tfoot>
 </table>
+<% } %>
