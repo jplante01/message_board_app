@@ -1,30 +1,33 @@
 <% if (typeof messages === 'undefined' || messages.length === 0) { %>
 <h2>No messages to display</h2>
 <% } else { %>
-<table>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">
-        <input type="checkbox">
-      </th>
-      <th scope="col">Username</th>
-      <th scope="col">Message</th>
-      <th scope="col">Timestamp</th>
-    </tr>
-  </thead> 
-  <tbody>
-  <% messages.forEach(function(message) { %>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <input type="checkbox" data-id="<%= decodeHTML(message.id) %>">
-      </td>
-      <td><%= decodeHTML(message.user.username) %></td>
-      <td><%= decodeHTML(message.title) %></td>
-      <td><%= decodeHTML(message.formatted_timestamp) %></td>
-    </tr>
-  <% }); %> 
-  </tbody>
-</table>
+<form>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">
+          <input type="checkbox" />
+        </th>
+        <th scope="col">Username</th>
+        <th scope="col">Message</th>
+        <th scope="col">Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% messages.forEach(function(message) { %>
+      <tr>
+        <th scope="row">1</th>
+        <td>
+          <input type="checkbox" data-id="<%= decodeHTML(message.id) %>" />
+        </td>
+        <td><%= decodeHTML(message.user.username) %></td>
+        <td><%= decodeHTML(message.title) %></td>
+        <td><%= decodeHTML(message.formatted_timestamp) %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <input type="submit" value="Delete" />
+</form>
 <% } %>
