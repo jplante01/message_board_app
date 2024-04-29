@@ -5,7 +5,9 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Checkbox</th>
+      <th scope="col">
+        <input type="checkbox">
+      </th>
       <th scope="col">Username</th>
       <th scope="col">Message</th>
       <th scope="col">Timestamp</th>
@@ -15,7 +17,9 @@
   <% messages.forEach(function(message) { %>
     <tr>
       <th scope="row">1</th>
-      <td>Checkbox</td>
+      <td>
+        <input type="checkbox" data-id="<%= decodeHTML(message.id) %>">
+      </td>
       <td><%= decodeHTML(message.user.username) %></td>
       <td><%= decodeHTML(message.title) %></td>
       <td><%= decodeHTML(message.formatted_timestamp) %></td>
