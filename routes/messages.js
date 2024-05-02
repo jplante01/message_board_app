@@ -18,4 +18,6 @@ router.get('/success', message_controller.message_create_success);
 // has the styling wanted, and <a> can't process DELETE requests
 router.get('/delete/:id', message_controller.delete_message);
 
+router.post('/admin', requireRole('admin'), message_controller.group_delete_message);
+
 module.exports = router;

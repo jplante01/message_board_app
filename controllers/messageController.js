@@ -76,10 +76,24 @@ exports.message_create_success = (req, res, next) => {
 };
 
 exports.delete_message = [
-
   asyncHandler(async (req, res, next) => {
     try {
       await Message.deleteOne({ _id: req.params.id });
+      res.redirect('/');
+    } catch (error) {
+      // Handle any errors that occur during the deletion process
+      console.error(error);
+      res.status(500).send('Error deleting message');
+    }
+  })
+];
+
+exports.group_delete_message = [
+  asyncHandler(async (req, res, next) => {
+    try {
+      const idsToDelete  = Object.keys(req.body);
+
+      await Message.deleteMany({ _id: { $in: idsToDelete} });
       res.redirect('/');
     } catch (error) {
       // Handle any errors that occur during the deletion process

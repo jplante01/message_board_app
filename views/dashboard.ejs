@@ -1,7 +1,7 @@
 <% if (typeof messages === 'undefined' || messages.length === 0) { %>
 <h2>No messages to display</h2>
 <% } else { %>
-<form>
+<form action="/messages/admin" method="POST">
   <table>
     <thead>
       <tr>
@@ -19,7 +19,7 @@
       <tr>
         <th scope="row">1</th>
         <td>
-          <input type="checkbox" data-id="<%= decodeHTML(message.id) %>" />
+          <input type="checkbox" name="<%= decodeHTML(message.id) %>" />
         </td>
         <td><%= decodeHTML(message.user.username) %></td>
         <td><%= decodeHTML(message.title) %></td>
