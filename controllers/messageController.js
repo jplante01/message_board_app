@@ -76,15 +76,37 @@ exports.message_create_success = (req, res, next) => {
 };
 
 exports.delete_message = [
+  // asyncHandler(async (req, res, next) => {
+  //   try {
+  //     await Message.deleteOne({ _id: req.params.id });
+  //     res.redirect('/');
+  //   } catch (error) {
+  //     // Handle any errors that occur during the deletion process
+  //     console.error(error);
+  //     res.status(500).send('Error deleting message');
+  //   }
+  // })
   asyncHandler(async (req, res, next) => {
-    try {
-      await Message.deleteOne({ _id: req.params.id });
-      res.redirect('/');
-    } catch (error) {
-      // Handle any errors that occur during the deletion process
-      console.error(error);
-      res.status(500).send('Error deleting message');
+    const messageId = req.params.id;
+    const userId = req.user.id; // Assuming userId is obtained from authentication middleware
+
+    // Find the message by ID
+    const message = await Message.findById(messageId);
+
+    if (!message) {
+      // Message not found
+      return res.status(404).send('Message not found');
     }
+
+    // Check if the authenticated user is the creator of the message
+    if (message.user.toString() !== userId) {
+      // User is not authorized to delete this message
+      return res.status(403).send('You are not authorized to delete this message');
+    }
+
+    // User is authorized, proceed with message deletion
+    await Message.deleteOne({ _id: messageId });
+    res.redirect('/');
   })
 ];
 
