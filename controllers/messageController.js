@@ -76,19 +76,9 @@ exports.message_create_success = (req, res, next) => {
 };
 
 exports.delete_message = [
-  // asyncHandler(async (req, res, next) => {
-  //   try {
-  //     await Message.deleteOne({ _id: req.params.id });
-  //     res.redirect('/');
-  //   } catch (error) {
-  //     // Handle any errors that occur during the deletion process
-  //     console.error(error);
-  //     res.status(500).send('Error deleting message');
-  //   }
-  // })
   asyncHandler(async (req, res, next) => {
     const messageId = req.params.id;
-    const userId = req.user.id; // Assuming userId is obtained from authentication middleware
+    const userId = req.user.id; 
 
     // Find the message by ID
     const message = await Message.findById(messageId);
