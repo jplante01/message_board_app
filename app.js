@@ -25,8 +25,7 @@ require('dotenv').config()
 // Set up mongoose connection
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-const mongoDB =
-  'mongodb+srv://jefe:lh32UULXq0Wzp3nK@cluster0.heqtz5w.mongodb.net/?retryWrites=true&w=majority';
+const mongoDB = process.env.MONGODB_URI
 
 main().catch(err => console.log(err));
 async function main() {
