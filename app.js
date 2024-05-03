@@ -19,6 +19,9 @@ const app = express();
 // Create a local variable for the he.decode() method
 app.locals.decodeHTML = he.decode;
 
+// import dotenv
+require('dotenv').config()
+
 // Set up mongoose connection
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);

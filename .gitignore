@@ -1,0 +1,21 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore environment variables file (if using dotenv)
+.env
+
+# Ignore log files
+*.log
+
+# Ignore npm debug logs
+npm-debug.log*
+
+# Ignore VS Code configuration files (if using Visual Studio Code)
+.vscode/
+
+# Ignore any generated files
+/build/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
