@@ -9,12 +9,16 @@ const bcrypt = require('bcryptjs');
 const logger = require('morgan');
 const User = require('./models/user');
 const he = require('he');
+const crypto = require('crypto');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const messagesRouter = require('./routes/messages');
 
 const app = express();
+
+// Generate and set a dynamic session secret
+const SESSION_SECRET = crypto.randomBytes(32).toString('hex');
 
 // Create a local variable for the he.decode() method
 app.locals.decodeHTML = he.decode;
@@ -70,7 +74,7 @@ passport.deserializeUser(async function (id, done) {
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
+app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
