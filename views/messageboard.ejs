@@ -23,7 +23,8 @@
         </div>
       </div>
       <%  if(user && user.username === message.user.username){ %>
-      <a href="/messages/delete/<%= message.id %>">
+      <!-- <a href="/messages/delete/<%= message.id %>"> -->
+        <a onclick="toggleModal(event)" data-target="modal-example" data-id="<%= message.id %>">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
