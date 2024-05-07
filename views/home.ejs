@@ -62,16 +62,16 @@
       <% } %>
     </main>
     <!-- MODAL -->
-    <dialog id="modal-example" open>
+    <dialog id="modal" open>
       <article>
         <header>
-          <button aria-label="Close" rel="prev" data-target="modal-example" onclick="toggleModal(event)"></button>
+          <button aria-label="Close" rel="prev" data-target="modal-example" onclick="closeModal(event)"></button>
           <p>
             <strong>Are you sure you want to delete this message?</strong>
           </p>
         </header>
-        <h3>Message title</h3>
-        <p>Message Content</p>
+        <h3 id="modal-message-title">Message title</h3>
+        <p id="modal-message-content">Message Content</p>
         <footer>
             <button>Confirm</button>
         </footer>
