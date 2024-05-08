@@ -16,8 +16,8 @@ let visibleModal = null;
 // Toggle modal
 const toggleModal = event => {
   event.preventDefault();
-  const modal = document.getElementById(event.currentTarget.dataset.target);
-  populateModal(modal, event);
+  
+  populateModal(event);
   if (!modal) return;
   modal && (modal.open ? closeModal(modal) : openModal(modal));
 };
@@ -79,11 +79,12 @@ const isScrollbarVisible = () => {
 // Populate the modal
 // Custom function to populate the attributes of the modal to make it useful for 
 // submitting the correct delete request. It will be called by toggleModal, which
-// will pass it the modal and the event. The modal has been selected from the DOM
-// by ID, which was pulled from event.target. The event should be able to provide
+// will pass it the event. The event should be able to provide
 // the data-id of the <a> tag, which will provide the message.id
 
-const populateModal = (modal, event) => {
-  console.log(modal);
-  console.log(event);
+const populateModal = (event) => {
+  const messageId = event.target.parentNode.parentNode.getAttribute('data-id');
+  const link = `/messages/delete/${messageId}`
+  const modalLink = document.getElementById('modal-link'); 
+  modalLink.href = link; 
 }
