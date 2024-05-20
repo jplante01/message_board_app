@@ -1,3 +1,4 @@
+// Import dependencies
 const express = require('express');
 const path = require('path');
 const createError = require('http-errors');
@@ -6,15 +7,18 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
-const logger = require('morgan');
+// const logger = require('morgan');
+const winston = require('winston');
 const User = require('./models/user');
 const he = require('he');
 const crypto = require('crypto');
 
+// Import routes
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const messagesRouter = require('./routes/messages');
 
+// Create the Express app
 const app = express();
 
 // Generate and set a dynamic session secret
@@ -26,12 +30,29 @@ app.locals.decodeHTML = he.decode;
 // import dotenv
 require('dotenv').config()
 
+// Create and configure the logger
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.simple(),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'logs/app.log' }),
+  ],
+});
+
+// Add the logger to the request object
+// app.use(logger('dev')); // MORGAN
+app.use((req, res, next) => {
+  req.logger = logger;
+  next();
+});
+
 // Set up mongoose connection
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 const mongoDB = process.env.MONGODB_URI
 
-main().catch(err => console.log(err));
+main().catch(err => logger.error(err.message));
 async function main() {
   await mongoose.connect(mongoDB);
 }
@@ -72,7 +93,7 @@ passport.deserializeUser(async function (id, done) {
   }
 });
 
-app.use(logger('dev'));
+
 app.use(express.json());
 app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
