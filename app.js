@@ -33,7 +33,14 @@ require('dotenv').config()
 // Create and configure the logger
 const logger = winston.createLogger({
   level: 'info',
-  format: winston.format.simple(),
+  format: winston.format.combine(
+    winston.format.timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss',
+    }),
+    winston.format.printf(({ timestamp, level, message }) => {
+      return `${timestamp} [${level}]: ${message}`;
+    }),
+  ),
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({ filename: 'logs/app.log' }),
