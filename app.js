@@ -59,10 +59,16 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 const mongoDB = process.env.MONGODB_URI
 
-main().catch(err => logger.error(err.message));
-async function main() {
-  await mongoose.connect(mongoDB);
+// main().catch(err => logger.error(err.message));
+async function connectToDatabase() {
+  try {
+    await mongoose.connect(mongoDB);
+    logger.info('Successfully connected to MongoDB');
+  } catch(error) {
+    logger.error(`error connecting to MongoDB: ${error.message}`)
+  }
 }
+connectToDatabase();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
