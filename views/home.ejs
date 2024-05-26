@@ -20,18 +20,17 @@
       </ul>
       <% if (user && user.admin === true) { %>
       <ul>
-        <li><small>Hello <%= user.username %></small></li>
+        <li><cite><%= user.username %></cite></li>
         <li><a href="/log-out">Log out</a></li>
         <li><a href="/messages/admin">dashboard</a></li>
       </ul>
       <% } else if (user) { %>
       <ul>
-        <li><small>Hello <%= user.username %></small></li>
+        <li><cite><%= user.username %></cite></li>
         <li><a href="/log-out">Log out</a></li>
       </ul>
       <% } else { %>
       <ul>
-        <li><a href="/users/login">Log in</a></li>
         <li><a href="/users/signup">Sign up</a></li>
       </ul>
       <% } %>
