@@ -3,7 +3,7 @@
     <% if (user) { %>
     <a href="/messages/create" role="button">Post to the MessageBoard!</a>
     <% } else { %>
-    <h3>Login to write to the messageboard!</h3>
+    <a href="/users/login" role="button">Login to post</a>
     <% } %> <% if (typeof messages === 'undefined' || messages.length === 0) {
     %>
     <h2>No messages to display</h2>
