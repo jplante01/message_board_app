@@ -1,0 +1,16 @@
+@media (max-width: 576px) {
+  .responsive-link {
+    display: none;
+  }
+  .icon {
+    display: inline;
+  }
+}
+@media (min-width: 577px) {
+  .responsive-link {
+    display: inline;
+  }
+  .icon {
+    display: none;
+  }
+}
