@@ -15,8 +15,8 @@
     <% } else { %> <% messages.forEach(function(message) { %>
     <article style="position: relative">
       <hgroup>
-        <h2><%= decodeHTML(message.title) %></h2>
-        <h3><%= decodeHTML(message.content) %></h3>
+        <h3><%= decodeHTML(message.title) %></h3>
+        <p class="pico-color-pink-500"><%= decodeHTML(message.content) %></p>
       </hgroup>
       <div style="display: grid; grid-template-columns: auto 1fr auto">
         <div style="display: inline-block">
