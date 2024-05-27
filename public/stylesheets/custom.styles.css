@@ -2,17 +2,17 @@
   .responsive-link {
     display: none;
   }
-  .icon {
+  /* .icon {
     display: inline;
-  }
+  } */
 }
 @media (min-width: 577px) {
   .responsive-link {
     display: inline;
   }
-  .icon {
+  /* .icon {
     display: none;
-  }
+  } */
 }
 
 .flex-container {
@@ -20,8 +20,10 @@
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: var(--spacing);
-  padding-left: var(--spacing);
   justify-content: space-between;
   align-items: flex-end;
+}
+
+nav {
+  align-items:start;
 }

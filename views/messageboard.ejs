@@ -2,10 +2,9 @@
   <section>
   <div class="flex-container">
     <% if (user) { %>
-    <a href="/messages/create" role="button">Post to the MessageBoard!</a>
-    <cite><%= user.username %></cite>
+    <a href="/messages/create" role="button">Post a message</a>
     <% } else { %>
-    <a href="/users/login" role="button">Login to post to the MessageBoard</a>
+    <a href="/users/login" role="button">Login to post</a>
     <% } %> 
   </div>
   </section>

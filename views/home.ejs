@@ -22,10 +22,11 @@
       </ul>
       <% if (user) { %>
       <ul>
-        <li><a class="responsive-link" href="/log-out">Log out</a></li>
+        <li><cite><%= user.username %></cite></li>
         <% if (user.admin === true) { %>
         <li><a href="/messages/admin">dashboard</a></li>
         <% } %>
+        <a class="responsive-link" href="/log-out">Log out</a>
         <li>
           <a class="icon" href="/log-out">
             <svg
