@@ -14,3 +14,14 @@
     display: none;
   }
 }
+
+.flex-container {
+  display: flex;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--spacing);
+  padding-left: var(--spacing);
+  justify-content: space-between;
+  align-items: flex-end;
+}

@@ -1,11 +1,13 @@
 <div>
   <section>
-  <% if (user) { %>
-  <a href="/messages/create" role="button">Post to the MessageBoard!</a>
-  <% } else { %>
-  <a href="/users/login" role="button">Login to post to the MessageBoard</a>
-  <% } %> 
-
+  <div class="flex-container">
+    <% if (user) { %>
+    <a href="/messages/create" role="button">Post to the MessageBoard!</a>
+    <cite><%= user.username %></cite>
+    <% } else { %>
+    <a href="/users/login" role="button">Login to post to the MessageBoard</a>
+    <% } %> 
+  </div>
   </section>
   <section>
     <% if (typeof messages === 'undefined' || messages.length === 0) {

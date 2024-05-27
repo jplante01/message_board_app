@@ -22,7 +22,6 @@
       </ul>
       <% if (user) { %>
       <ul>
-        <li><cite><%= user.username %></cite></li>
         <li><a class="responsive-link" href="/log-out">Log out</a></li>
         <% if (user.admin === true) { %>
         <li><a href="/messages/admin">dashboard</a></li>
