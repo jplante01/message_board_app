@@ -2,9 +2,9 @@
   <section>
   <div class="flex-container">
     <% if (user) { %>
-    <a href="/messages/create" role="button">Post a message</a>
+    <a class="outline" href="/messages/create" role="button">Post a message</a>
     <% } else { %>
-    <a href="/users/login" role="button">Login to post</a>
+    <a class="outline" href="/users/login" role="button">Login to post</a>
     <% } %> 
   </div>
   </section>
@@ -16,7 +16,7 @@
     <article style="position: relative">
       <hgroup>
         <h3><%= decodeHTML(message.title) %></h3>
-        <p class="pico-color-pink-500"><%= decodeHTML(message.content) %></p>
+        <p class="pico-color-zinc-200"><%= decodeHTML(message.content) %></p>
       </hgroup>
       <div style="display: grid; grid-template-columns: auto 1fr auto">
         <div style="display: inline-block">
