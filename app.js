@@ -61,8 +61,8 @@ mongoose.set('strictQuery', false);
 // Select the applicable DB connection string for environment
 const isProduction = process.env.NODE_ENV === 'production';
 const mongoDB = isProduction
-  ? process.env.MONGO_URI_PROD
-  : process.env.MONGO_URI_DEV;
+  ? process.env.MONGODB_URI_PROD
+  : process.env.MONGODB_URI_DEV;
 
 // main().catch(err => logger.error(err.message));
 async function connectToDatabase() {
