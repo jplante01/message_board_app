@@ -57,7 +57,12 @@ app.use((req, res, next) => {
 // Set up mongoose connection
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-const mongoDB = process.env.MONGODB_URI
+
+// Select the applicable DB connection string for environment
+const isProduction = process.env.NODE_ENV === 'production';
+const mongoDB = isProduction
+  ? process.env.MONGO_URI_PROD
+  : process.env.MONGO_URI_DEV;
 
 // main().catch(err => logger.error(err.message));
 async function connectToDatabase() {
