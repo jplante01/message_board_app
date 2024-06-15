@@ -2,17 +2,17 @@
   .responsive-link {
     display: none;
   }
-  /* .icon {
+  .responsive-icon {
     display: inline;
-  } */
+  }
 }
 @media (min-width: 577px) {
   .responsive-link {
     display: inline;
   }
-  /* .icon {
+  .responsive-icon {
     display: none;
-  } */
+  }
 }
 
 .flex-container {
@@ -26,4 +26,8 @@
 
 nav {
   align-items:start;
+}
+
+.pb-0 {
+  padding-bottom: 0;
 }

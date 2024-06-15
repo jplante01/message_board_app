@@ -33,20 +33,22 @@
                   d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                 ></path>
               </svg>
-              <strong>MessageBoard</strong>
+              <small>MessageBoard</small>
             </a>
           </h3>
         </li>
       </ul>
       <% if (user) { %>
       <ul>
-        <li><cite><%= user.username %></cite></li>
+        <li class="pb-0"><cite><%= user.username %></cite></li>
         <% if (user.admin === true) { %>
-        <li><a href="/messages/admin">dashboard</a></li>
+        <li class="pb-0"><a href="/messages/admin">dashboard</a></li>
         <% } %>
-        <a class="responsive-link" href="/log-out">Log Out</a>
+        <li> <a href="/messages/create" role="button">Post</a>
+        </li>
+        <li class="responsive-link"> <a class="outline contrast" role="button" href="/log-out">Log Out</a> </li>
         <li>
-          <a class="icon" href="/log-out">
+          <a class="responsive-icon" href="/log-out">
             <svg
               viewBox="0 0 24 24"
               width="24"
@@ -67,6 +69,7 @@
       </ul>
       <% } else { %>
       <ul>
+        <li><a href="/users/login" role="button">Login</a></li>
         <li><a href="/users/signup" role="button" class="outline contrast">Sign Up</a></li>
       </ul>
       <% } %>

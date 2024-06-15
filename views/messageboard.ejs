@@ -1,14 +1,5 @@
 <div>
   <section>
-  <div class="flex-container">
-    <% if (user) { %>
-    <a href="/messages/create" role="button">Post</a>
-    <% } else { %>
-    <a href="/users/login" role="button">Login</a>
-    <% } %> 
-  </div>
-  </section>
-  <section>
     <% if (typeof messages === 'undefined' || messages.length === 0) {
     %>
     <h2>No messages to display</h2>
