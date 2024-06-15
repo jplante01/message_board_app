@@ -58,7 +58,7 @@ app.use((req, res, next) => {
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
-// Select the applicable DB connection string for environment
+// Select the appropriate DB connection string for environment
 const isProduction = process.env.NODE_ENV === 'production';
 const mongoDB = isProduction
   ? process.env.MONGODB_URI_PROD
